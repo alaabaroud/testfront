@@ -17,7 +17,7 @@ export class FavCards extends Component {
                     <Button variant="danger" onClick={() => this.props.deleteFavorite (i._id)} >
                       delete
                     </Button>
-                    <Button variant="danger" onClick={() => this.props.UpdateFavorite (i)} >
+                    <Button variant="danger" onClick={() => this.props.UpdateFavorite(i)} >
                       update
                     </Button>
                   </Card.Body>

@@ -39,13 +39,13 @@ UpdateFavorite = (item)=> {
   this.setState({ShowModal: true , UpdateData:item  })
 }
 
-UpdateFav = (e)=> {
+UpdateFav = async (e)=> {
   const id =this.state.UpdateData._id;
   const body = {
     name: e.target.name.value,
     instructions: e.target.instructions.value
   }
-  const req= axios.put (`http://localhost:3333/Flower/fav/${id}, body`)
+  const req= await axios.put (`http://localhost:3333/Flower/fav/${id}`, body)
   const newItem = this.state.dataCrud.map(obj => {
     if(obj._id === id) {
      obj.instructions= req.data.instructions
@@ -74,12 +74,13 @@ close =() => {
          <FavCards
          dataCrud = {this.state.dataCrud}
          deleteFavorite = {this.deleteFavorite}
+         UpdateFavorite={ this.UpdateFavorite}
           /> }
        {this.state.ShowModal && 
        <FavModal 
        UpdateData= {this.state.UpdateData}
        UpdateFav ={this.UpdateFav}
-       ShowModal = {this.ShowModal}
+       ShowModal = {this.state.ShowModal}
        close= {this.close}
        />
        }
